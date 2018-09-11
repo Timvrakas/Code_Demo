@@ -160,10 +160,10 @@ OPTIMIZATION = -O1
 ARFLAGS = 
 
 # Extra flags to use when assembling.
-ASFLAGS = -mcpu=cortex-m0plus -mthumb -g
+ASFLAGS = 
 
 # Extra flags to use when compiling.
-CFLAGS = -x c -mthumb -O1 -fdata-sections -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m0plus -c -pipe -fno-strict-aliasing -Wall -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -std=gnu99 -ffunction-sections -fdata-sections -Wchar-subscripts -Wcomment -Wformat=2 -Wimplicit-int -Wmain -Wparentheses -Wsequence-point -Wreturn-type -Wswitch -Wtrigraphs -Wunused -Wuninitialized -Wunknown-pragmas -Wfloat-equal -Wundef -Wshadow -Wbad-function-cast -Wwrite-strings -Wsign-compare -Waggregate-return  -Wmissing-declarations -Wformat -Wmissing-format-attribute -Wno-deprecated-declarations -Wpacked -Wredundant-decls -Wnested-externs -Wlong-long -Wunreachable-code -Wcast-align --param max-inline-insns-single=500
+CFLAGS = 
 
 # Extra flags to use when preprocessing.
 #
@@ -184,8 +184,7 @@ CPPFLAGS = \
        -D __FREERTOS__
 
 # Extra flags to use when linking
-LDFLAGS = -mthumb -Wl,-Map="$(OutputFileName).map" -Wl,--start-group -larm_cortexM0l_math -lm  -Wl,--end-group -L"../src/ASF/thirdparty/CMSIS/Lib/GCC"  -Wl,--gc-sections -mcpu=cortex-m0plus -Wl,--entry=Reset_Handler -Wl,--cref -mthumb
-
+LDFLAGS = 
 
 # Pre- and post-build commands
 PREBUILD_CMD = 
