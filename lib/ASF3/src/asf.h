@@ -52,12 +52,21 @@
  * running the ASF driver selector tool. Any changes will be discarded.
  */
 
+// From module: BOD - Brown Out Detector
+#include <bod.h>
+
 // From module: Common SAM0 compiler driver
 #include <compiler.h>
 #include <status_codes.h>
 
 // From module: Common build items for user board support templates
 #include <user_board.h>
+
+// From module: Delay routines
+#include <delay.h>
+
+// From module: EEPROM Emulator Service
+#include <eeprom.h>
 
 // From module: EXTINT - External Interrupt (Callback APIs)
 #include <extint.h>
@@ -87,6 +96,9 @@
 // From module: Interrupt management - SAM implementation
 #include <interrupt.h>
 
+// From module: NVM - Non-Volatile Memory
+#include <nvm.h>
+
 // From module: PORT - GPIO Pin Control
 #include <port.h>
 
@@ -95,6 +107,21 @@
 
 // From module: SAM D21/R21/D11/L21/DA1/L22 USB Dual role interface
 #include <usb_dual.h>
+
+// From module: SD/MMC stack on SPI interface
+#include <sd_mmc.h>
+
+// From module: SERCOM Callback API
+#include <sercom.h>
+#include <sercom_interrupt.h>
+
+// From module: SERCOM SPI - Serial Peripheral Interface (Callback APIs)
+#include <spi.h>
+#include <spi_interrupt.h>
+
+// From module: SERCOM USART - Serial Communications (Callback APIs)
+#include <usart.h>
+#include <usart_interrupt.h>
 
 // From module: SYSTEM - Clock Management for SAMD21/R21/DA/HA
 #include <clock.h>
@@ -134,5 +161,9 @@
 // From module: USB Device Stack Core (Common API)
 #include <udc.h>
 #include <udd.h>
+
+// From module: WDT - Watchdog Timer (Callback APIs)
+#include <wdt.h>
+#include <wdt_callback.h>
 
 #endif // ASF_H

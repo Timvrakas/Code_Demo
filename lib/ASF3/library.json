@@ -33,7 +33,18 @@
         "-Isrc/thirdparty/freertos/freertos-10.0.0/Source/include",
         "-Isrc/thirdparty/freertos/freertos-10.0.0/Source/portable/GCC/ARM_CM0",
         "-Isrc/thirdparty/CMSIS/Include",
-        "-Isrc/thirdparty/CMSIS/Lib/GCC"
+        "-Isrc/thirdparty/CMSIS/Lib/GCC",
+        "-Isrc/sam0/drivers/nvm",
+        "-Isrc/sam0/services/eeprom/emulator/main_array",
+        "-Isrc/common2/components/memory/sd_mmc",
+        "-Isrc/common2/services/delay",
+        "-Isrc/common2/services/delay/sam0",
+        "-Isrc/sam0/drivers/bod",
+        "-Isrc/sam0/drivers/bod/bod_sam_d_r_h",
+        "-Isrc/sam0/drivers/sercom",
+        "-Isrc/sam0/drivers/sercom/spi",
+        "-Isrc/sam0/drivers/sercom/usart",
+        "-Isrc/sam0/drivers/wdt"
     ],
     "libArchive": false
 }
