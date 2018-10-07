@@ -63,17 +63,17 @@
 #  define SD_MMC_0_CD_GPIO           (EXT1_PIN_10)
 #  define SD_MMC_0_CD_DETECT_VALUE   0
 #else /* Dummy configuration */
-#  define SD_MMC_SPI                 0
-#  define SD_MMC_SPI_PINMUX_SETTING  0
-#  define SD_MMC_SPI_PINMUX_PAD0     0
-#  define SD_MMC_SPI_PINMUX_PAD1     0
-#  define SD_MMC_SPI_PINMUX_PAD2     0
-#  define SD_MMC_SPI_PINMUX_PAD3     0
+#  define SD_MMC_SPI                 SERCOM4
+#  define SD_MMC_SPI_PINMUX_SETTING  SPI_SIGNAL_MUX_SETTING_E //DOPO=1, DIPO=0
+#  define SD_MMC_SPI_PINMUX_PAD0     PINMUX_PA12D_SERCOM4_PAD0 //MISO
+#  define SD_MMC_SPI_PINMUX_PAD1     PINMUX_PA13D_SERCOM4_PAD1 //not used
+#  define SD_MMC_SPI_PINMUX_PAD2     PINMUX_PB10D_SERCOM4_PAD2 //MOSI
+#  define SD_MMC_SPI_PINMUX_PAD3     PINMUX_PB11D_SERCOM4_PAD3 //SCK
 
-#  define SD_MMC_CS                  0
+#  define SD_MMC_CS                  PIN_PA15
 
-#  define SD_MMC_0_CD_GPIO           0
-#  define SD_MMC_0_CD_DETECT_VALUE   0
+//#  define SD_MMC_0_CD_GPIO           PIN_PA05
+//#  define SD_MMC_0_CD_DETECT_VALUE   0
 #endif
 
 /* Define the SPI clock source */

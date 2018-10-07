@@ -1,4 +1,5 @@
 #include <asf.h>
+#include "sdio.h"
 
 static TaskHandle_t xCreatedLedTask;
 
@@ -10,6 +11,13 @@ static void task_led(void * pvParameters){
 	}
 }
 
+static void task_sdio(void * pvParameters){
+	while(true){
+		printf("Free: %d\r\n",xPortGetFreeHeapSize());
+		printf("yeet");
+		sdio();
+	}
+}
 
 static void task_usb_monitor(void * pvParameters){
 	while(true){
@@ -22,6 +30,14 @@ static void task_usb_monitor(void * pvParameters){
 			case 's':
 			vTaskSuspend(xCreatedLedTask);
 			printf("- LED blink task suspended.\r\n");
+			printf("Free: %d\r\n",xPortGetFreeHeapSize());
+			break;
+			case 'c':
+			printf("Starting SD card boi\r\n");
+			printf("Free: %d\r\n",xPortGetFreeHeapSize());
+			if(xTaskCreate(task_sdio,"SDIO",100,NULL,3,NULL) == errCOULD_NOT_ALLOCATE_REQUIRED_MEMORY){
+				printf("Error");
+			}
 			break;
 		}
 	}
@@ -30,8 +46,8 @@ static void task_usb_monitor(void * pvParameters){
 
 int main(void){
 	system_init();
-	port_pin_set_output_level(PIN_PA28,true);
-	xTaskCreate(task_led,"LED Task",100,NULL,2,&xCreatedLedTask); //target method, name, stack size, parameters, priority, handle
-	xTaskCreate(task_usb_monitor,"Monitor Task",200,NULL,1,NULL);
+
+	xTaskCreate(task_led,"LED Task",64,NULL,2,&xCreatedLedTask); //target method, name, stack size, parameters, priority, handle
+	xTaskCreate(task_usb_monitor,"Monitor Task",175,NULL,1,NULL); //target method, name, stack size, parameters, priority, handle
 	vTaskStartScheduler();
 }
