@@ -93,28 +93,20 @@
 
 
 static void main_display_info_card(uint8_t slot);
-//static void main_test_memory(uint8_t slot);
+static void main_test_memory(uint8_t slot);
 
 /**
  * \brief Application entry point.
  *
  * \return Unused (ANSI-C compatibility).
  */
-int sdio(void)
+static void task_sdio(void * pvParameters)
 {
 	uint8_t slot = 0;
 	sd_mmc_err_t err;
-	printf("superYeet");
-	delay_ms(1000);
-
-
-	//system_init();
-	//delay_init();
 
 	//irq_initialize_vectors();
 	//cpu_irq_enable();
-
-	//time_tick_init();
 
 	// Initialize SD MMC stack
 	sd_mmc_init();
@@ -147,13 +139,10 @@ int sdio(void)
 		/* Test the card */
 		if (sd_mmc_get_type(slot) & (CARD_TYPE_SD | CARD_TYPE_MMC)) {
 			// SD/MMC Card R/W
-			//main_test_memory(slot);
-		}	
-
-		printf("Test finished, please unplugged the card.\n\r");
-		while (SD_MMC_OK == sd_mmc_check(slot)) {
+			main_test_memory(slot);
 		}
-		slot++;
+
+		vTaskDelay(2000);
 	}
 }
 
@@ -198,7 +187,7 @@ static void main_display_info_card(uint8_t slot)
  *
  * \param slot   SD/MMC slot to test
  */
-/* static void main_test_memory(uint8_t slot)
+static void main_test_memory(uint8_t slot)
 {
 	uint32_t last_blocks_addr, i, nb_trans;
 	uint32_t tick_start, time_ms;
@@ -318,4 +307,3 @@ static void main_display_info_card(uint8_t slot)
 	}
 	printf("[OK]\n\r");
 }
- */

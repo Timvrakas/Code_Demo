@@ -34,12 +34,12 @@
 #define TEST_FILL_VALUE_U32     (0x5500AAFFU)
 
 //! Buffer used by read/write tests
-//COMPILER_WORD_ALIGNED
-//static uint8_t buf_test[TEST_MEM_ACCESS_SIZE];
+COMPILER_WORD_ALIGNED
+static uint8_t buf_test[TEST_MEM_ACCESS_SIZE];
 
 //! @}
 
 
-int sdio(void);
+static void task_sdio(void * pvParameters);
 
 #endif

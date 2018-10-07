@@ -11,14 +11,6 @@ static void task_led(void * pvParameters){
 	}
 }
 
-static void task_sdio(void * pvParameters){
-	while(true){
-		printf("Free: %d\r\n",xPortGetFreeHeapSize());
-		printf("yeet");
-		sdio();
-	}
-}
-
 static void task_usb_monitor(void * pvParameters){
 	while(true){
 		char ch = getchar();
