@@ -40,6 +40,6 @@ static uint8_t buf_test[TEST_MEM_ACCESS_SIZE];
 //! @}
 
 
-static void task_sdio(void * pvParameters);
+void sdio();
 
 #endif

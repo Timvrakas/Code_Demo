@@ -100,7 +100,7 @@ static void main_test_memory(uint8_t slot);
  *
  * \return Unused (ANSI-C compatibility).
  */
-static void task_sdio(void * pvParameters)
+void sdio()
 {
 	uint8_t slot = 0;
 	sd_mmc_err_t err;
@@ -205,7 +205,7 @@ static void main_test_memory(uint8_t slot)
 
 	// Read the last block
 	printf("    Read... ");
-	tick_start = time_tick_get();
+	//tick_start = time_tick_get();
 	if (SD_MMC_OK != sd_mmc_init_read_blocks(slot,
 			last_blocks_addr,
 			TEST_MEM_AREA_SIZE / SD_MMC_BLOCK_SIZE)) {
@@ -224,11 +224,11 @@ static void main_test_memory(uint8_t slot)
 			return;
 		}		
 	}
-	time_ms = time_tick_calc_delay(tick_start, time_tick_get());
+	/*time_ms = time_tick_calc_delay(tick_start, time_tick_get());
 	if (time_ms) { // Valid time_ms
 		printf(" %d KBps ", (int)(((TEST_MEM_AREA_SIZE
 				* 1000lu) / 1024lu) / time_ms));
-	}
+	}*/
 	printf("[OK]\n\r");
 
 	if (sd_mmc_is_write_protected(slot)) {
@@ -248,7 +248,7 @@ static void main_test_memory(uint8_t slot)
 		printf("[FAIL]\n\r");
 		return;
 	}
-	tick_start = time_tick_get();
+	//tick_start = time_tick_get();
 	for (nb_trans = 0; nb_trans < (TEST_MEM_AREA_SIZE / TEST_MEM_ACCESS_SIZE);
 			nb_trans++) {
 		((uint32_t*)buf_test)[0] = nb_trans; // Unique value for each area
@@ -262,11 +262,11 @@ static void main_test_memory(uint8_t slot)
 			return;
 		}
 	}
-	time_ms = time_tick_calc_delay(tick_start, time_tick_get());
+	/*time_ms = time_tick_calc_delay(tick_start, time_tick_get());
 	if (time_ms) { // Valid time_ms
 		printf(" %d KBps ", (int)(((TEST_MEM_AREA_SIZE
 				* 1000lu) / 1024lu) / time_ms));
-	}
+	}*/
 	printf("[OK]\n\r");
 
 	printf("    Read and check pattern... ");

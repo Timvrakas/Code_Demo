@@ -11,6 +11,10 @@ static void task_led(void * pvParameters){
 	}
 }
 
+static void task_sdio(void * pvParameters){
+	sdio();
+}
+
 static void task_usb_monitor(void * pvParameters){
 	while(true){
 		char ch = getchar();
@@ -38,7 +42,6 @@ static void task_usb_monitor(void * pvParameters){
 
 int main(void){
 	system_init();
-
 	xTaskCreate(task_led,"LED Task",64,NULL,2,&xCreatedLedTask); //target method, name, stack size, parameters, priority, handle
 	xTaskCreate(task_usb_monitor,"Monitor Task",175,NULL,1,NULL); //target method, name, stack size, parameters, priority, handle
 	vTaskStartScheduler();
